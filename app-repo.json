@@ -12,6 +12,12 @@
       "subtitle": "A tweak collection for YouTube",
       "tintColor": "cd201f",
       "versions": [
+        {
+          "version": "19.43.2",
+          "date": "2024-11-10",
+          "size": 115066063,
+          "downloadURL": "https://github.com/castdrian/YTLitePlus/releases/download/v19.43.2/YTLitePlus_19.43.2_5.0.2.ipa"
+        }
       ],
       "appPermissions": {}
     }
