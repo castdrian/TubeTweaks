@@ -166,13 +166,6 @@ jobs:
           BUNDLE_ID: ${{ inputs.bundle_id }}
           APP_NAME: ${{ inputs.app_name }}
       
-      - name: Prepare Release Notes
-        if: ${{ inputs.create_release }}
-        run: |
-          export TODAY=$(date '+%Y-%m-%d')
-          sed "s/%ytliteplus_version%/${{ env.YTLITE_VERSION }}/g; s/%youtube_version%/${{ env.YT_VERSION }}/g; s/%catbox_url%/${{ env.CATBOX_FILE }}/g; s/%date%/$TODAY/g" \
-          main/.github/RELEASE_TEMPLATE/Release.md > ${{ github.workspace }}/release_notes.md
-
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -180,7 +173,6 @@ jobs:
           files: |
             ${{ github.workspace }}/main/packages/${{ steps.build_package.outputs.package }}
           generate_release_notes: true
-          body_path: ${{ github.workspace }}/release_notes.md
           fail_on_unmatched_files: true
           token: ${{ env.GITHUB_TOKEN }}
         env:
