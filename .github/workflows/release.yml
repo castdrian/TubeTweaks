@@ -1,6 +1,3 @@
-# Original idea by @ISnackable. Many thanks to them for handling the hardest parts!
-# https://github.com/ISnackable/CercubePlus/blob/main/.github/workflows/Build.yml
-
 name: Build and Release YTLitePlus
 
 on:
@@ -29,7 +26,7 @@ concurrency:
 jobs:
   build:
     name: Build YTLitePlus
-    runs-on: macos-12
+    runs-on: macos-13
     permissions:
       contents: write
 
@@ -42,7 +39,7 @@ jobs:
           submodules: recursive
 
       - name: Install Dependencies
-        run: brew install ldid dpkg make
+        run: brew install dpkg
 
       - name: Prepare Theos
         uses: Randomblock1/theos-action@v1
