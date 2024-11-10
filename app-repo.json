@@ -1,0 +1,20 @@
+{
+  "name": "YouTube App Repo",
+  "identifier": "dev.youtube.ytplus",
+  "iconURL": "https://cdn-icons-png.flaticon.com/512/255/255337.png",
+  "apps": [
+    {
+      "name": "YTLitePlus",
+      "bundleIdentifier": "com.google.ios.youtube",
+      "developerName": "Multiple People",
+      "iconURL": "https://cdn-icons-png.flaticon.com/512/255/255337.png",
+      "localizedDescription": "A tweak collection for YouTube",
+      "subtitle": "A tweak collection for YouTube",
+      "tintColor": "cd201f",
+      "versions": [
+      ],
+      "appPermissions": {}
+    }
+  ],
+  "news": []
+}

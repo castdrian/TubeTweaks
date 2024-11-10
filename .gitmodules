@@ -4,8 +4,8 @@
 [submodule "Tweaks/PSHeader"]
 	path = Tweaks/PSHeader
 	url = https://github.com/PoomSmart/PSHeader.git
-[submodule "Tweaks/FLEX"]
-	path = Tweaks/FLEX
+[submodule "Tweaks/FLEXing"]
+	path = Tweaks/FLEXing
 	url = https://github.com/PoomSmart/FLEXing.git
 [submodule "Tweaks/iSponsorBlock"]
 	path = Tweaks/iSponsorBlock
@@ -62,3 +62,6 @@
 	path = Tweaks/FLEXing
 	url = https://github.com/PoomSmart/FLEXing.git
 	branch = rootless
+[submodule "Tweaks/Gonerino"]
+	path = Tweaks/Gonerino
+	url = https://github.com/castdrian/Gonerino.git
