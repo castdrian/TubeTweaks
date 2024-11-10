@@ -178,7 +178,7 @@ jobs:
         with:
           tag_name: v${{ env.YT_VERSION }}
           files: |
-            packages/YTLitePlus_${{ env.YT_VERSION }}_${{ env.YTLITE_VERSION }}.ipa
+            ${{ github.workspace }}/main/packages/${{ steps.build_package.outputs.package }}
           generate_release_notes: true
           body_path: ${{ github.workspace }}/release_notes.md
           fail_on_unmatched_files: true
