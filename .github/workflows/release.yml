@@ -24,7 +24,7 @@ jobs:
       APP_NAME: YouTube
 
     steps:
-      - name: Checkout Main
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.commit_id || github.ref }}
@@ -135,7 +135,7 @@ jobs:
         with:
           tag_name: v${{ env.YT_VERSION }}
           files: |
-            ${{ github.workspace }}/main/packages/${{ steps.build_package.outputs.package }}
+            ${{ github.workspace }}/packages/${{ steps.build_package.outputs.package }}
           generate_release_notes: true
           fail_on_unmatched_files: true
           token: ${{ env.GITHUB_TOKEN }}
@@ -144,7 +144,6 @@ jobs:
 
       - name: Update app-repo.json
         run: |
-          cd ${{ github.workspace }}/main
           DATE=$(date -u +"%Y-%m-%d")
           IPA_SIZE=$(ls -l packages/${{ steps.build_package.outputs.package }} | awk '{print $5}')
           DOWNLOAD_URL=https://github.com/${{ github.repository }}/releases/download/v${{ env.YT_VERSION }}/YTLitePlus_${{ env.YT_VERSION }}_${{ env.YTLITE_VERSION }}.ipa
