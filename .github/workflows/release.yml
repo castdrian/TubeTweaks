@@ -181,7 +181,7 @@ jobs:
       - name: Update app-repo.json
         run: |
           DATE=$(date -u +"%Y-%m-%d")
-          IPA_SIZE=$(ls -l packages/YTLitePlus_${{ env.YT_VERSION }}_${{ env.YTLITE_VERSION }}.ipa | awk '{print $5}')
+          IPA_SIZE=$(ls -l ${{ github.workspace }}/main/packages/${{ steps.build_package.outputs.package }} | awk '{print $5}')
           DOWNLOAD_URL=https://github.com/${{ github.repository }}/releases/download/v${{ env.YT_VERSION }}/YTLitePlus_${{ env.YT_VERSION }}_${{ env.YTLITE_VERSION }}.ipa
           NEW_ENTRY=$(jq -n --arg version "$VERSION" --arg date "$DATE" --arg size "$IPA_SIZE" --arg downloadURL "$DOWNLOAD_URL" '{version: $version, date: $date, size: ($size | tonumber), downloadURL: $downloadURL}')
           jq --argjson newEntry "$NEW_ENTRY" '.apps[0].versions |= [$newEntry] + .' app-repo.json > temp.json && mv temp.json app-repo.json
