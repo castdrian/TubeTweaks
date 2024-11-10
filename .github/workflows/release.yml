@@ -49,13 +49,8 @@ jobs:
       - name: Install Dependencies
         run: brew install ldid dpkg make
 
-      - name: Download Theos
-        uses: actions/checkout@v4
-        with:
-          repository: theos/theos
-          ref: 3da31488281ecf4394d10302d2629607f4a1aa07
-          path: theos
-          submodules: recursive
+      - name: Prepare Theos
+        uses: Randomblock1/theos-action@v1
 
       - name: iOS SDK Caching
         id: SDK
@@ -180,10 +175,11 @@ jobs:
 
       - name: Update app-repo.json
         run: |
+          cd ${{ github.workspace }}/main
           DATE=$(date -u +"%Y-%m-%d")
-          IPA_SIZE=$(ls -l ${{ github.workspace }}/main/packages/${{ steps.build_package.outputs.package }} | awk '{print $5}')
+          IPA_SIZE=$(ls -l packages/${{ steps.build_package.outputs.package }} | awk '{print $5}')
           DOWNLOAD_URL=https://github.com/${{ github.repository }}/releases/download/v${{ env.YT_VERSION }}/YTLitePlus_${{ env.YT_VERSION }}_${{ env.YTLITE_VERSION }}.ipa
-          NEW_ENTRY=$(jq -n --arg version "$VERSION" --arg date "$DATE" --arg size "$IPA_SIZE" --arg downloadURL "$DOWNLOAD_URL" '{version: $version, date: $date, size: ($size | tonumber), downloadURL: $downloadURL}')
+          NEW_ENTRY=$(jq -n --arg version "${{ env.YT_VERSION }}" --arg date "$DATE" --arg size "$IPA_SIZE" --arg downloadURL "$DOWNLOAD_URL" '{version: $version, date: $date, size: ($size | tonumber), downloadURL: $downloadURL}')
           jq --argjson newEntry "$NEW_ENTRY" '.apps[0].versions |= [$newEntry] + .' app-repo.json > temp.json && mv temp.json app-repo.json
         
       - uses: EndBug/add-and-commit@v9
