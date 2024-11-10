@@ -15,6 +15,7 @@
 <a href="https://github.com/YTLitePlus/YTLitePlus/releases/latest"><img src="https://custom-icon-badges.demolab.com/github/v/release/Balackburn/YTLitePlus?labelColor=black&style=flat&color=black&label=Latest%20release" alt="Badge"></img></a>
 
 # Table of Contents
+
 <a href="#credits"><img src="https://raw.githubusercontent.com/YTLitePlus/Assets/main/Github/Buttons/TableOfContents/Credits.png" width="170"></a>
 
 <a href="#features"><img src="https://raw.githubusercontent.com/YTLitePlus/Assets/main/Github/Buttons/TableOfContents/Features.png" width="170"></a>
@@ -96,7 +97,7 @@
 
 12. **YTNoCheckLocalNetWor**k: Blocks the Local Network permission popup in YouTube.
 
-13. **BigYTMiniPlayer**: Jailbreak tweak that makes the miniplayer in youtube easier to see. 
+13. **BigYTMiniPlayer**: Jailbreak tweak that makes the miniplayer in youtube easier to see.
 
 14. **YTSpeed**: Adds 2.25x to 5x playback speed options in the YouTube video player.
 
@@ -114,6 +115,8 @@
 
 21. **LowContrastMode**: Makes the UI interface look dimmer to make it easier on the eyes. (App Compatibility: v17.33.2-v17.38.10)
 
+22. **Gonerino**: A YouTube tweak that allows you to block specific channels and automatically remove their videos from your feed. Block channels directly from video context menu and remove "People also watched this video" and "You might also like this" suggestions.
+
 # AltStore
   
 <a href="https://tinyurl.com/YTLiteAltstore"><img src="https://raw.githubusercontent.com/YTLitePlus/Assets/main/Github/Buttons/Altstore/Altstore.png" width="200"></a>
@@ -125,6 +128,7 @@
 <a href="https://raw.githubusercontent.com/Balackburn/YTLitePlusAltstore/main/apps.json"><img src="https://github.com/YTLitePlus/Assets/blob/main/Github/Buttons/Altstore/URL.png" width="200"></a>
 
 # Donations
+
 <a href="https://buymeacoffee.com/dayanch96"><img src="https://github.com/YTLitePlus/Assets/blob/main/Github/Buttons/Donations/Dayanch96(buymeacoffee).png" width="200"></a>
 &nbsp;
 <a href="https://github.com/sponsors/dayanch96"><img src="https://github.com/YTLitePlus/Assets/blob/main/Github/Buttons/Donations/Dayanch96(Github).png" width="200"></a>
@@ -136,7 +140,6 @@
 <a href="https://www.paypal.com/paypalme/DBrett684"><img src="https://github.com/YTLitePlus/Assets/blob/main/Github/Buttons/Donations/Galactic-dev(Paypal).png" width="200"></a>
 &nbsp;
 <a href="https://venmo.com/u/DavidBrett"><img src="https://github.com/YTLitePlus/Assets/blob/main/Github/Buttons/Donations/Galactic-dev(Venmo).png?raw=true" width="200"></a>
-
 
 <a href="https://github.com/MiRO92/uYou-for-YouTube#support"><img src="https://raw.githubusercontent.com/YTLitePlus/Assets/main/Github/Buttons/Donations/MIRO92.png" width="200"></a>
 &nbsp;
@@ -150,4 +153,5 @@
 <a href="https://www.patreon.com/julioverne"><img src="https://github.com/YTLitePlus/Assets/blob/main/Github/Buttons/Donations/julioverne.png?raw=true" width="200"></a>
 
 # Building
+
 See [YTLitePlus/Building - Wiki](https://github.com/Balackburn/YTLitePlus/wiki/Building)

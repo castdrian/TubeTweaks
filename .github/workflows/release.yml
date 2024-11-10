@@ -8,16 +8,6 @@ on:
         default: ""
         required: true
         type: string
-      bundle_id:
-        description: "Modify the bundle ID"
-        default: "com.google.ios.youtube"
-        required: true
-        type: string
-      app_name:
-        description: "Modify the app name"
-        default: "YouTube"
-        required: true
-        type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -29,17 +19,18 @@ jobs:
     runs-on: macos-12
     permissions:
       contents: write
+    env:
+      BUNDLE_ID: com.google.ios.youtube
+      APP_NAME: YouTube
 
     steps:
       - name: Checkout Main
         uses: actions/checkout@v4
         with:
-          path: main
           ref: ${{ github.event.inputs.commit_id || github.ref }}
           submodules: recursive
-
-      - name: Install Dependencies
-        run: brew install dpkg
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Prepare Theos
         uses: Randomblock1/theos-action@v1
@@ -84,18 +75,18 @@ jobs:
       - name: Prepare YouTube iPA
         run: |
           # Download and unzip iPA
-          wget "$YOUTUBE_URL" --quiet --no-verbose -O main/YouTube.ipa
-          unzip -q main/YouTube.ipa -d main/tmp
+          wget "${{ github.event.inputs.decrypted_youtube_url }}" --quiet --no-verbose -O YouTube.ipa
+          unzip -q YouTube.ipa -d tmp
           # Get the version number of the YouTube app and store it
-          echo "YT_VERSION=$(grep -A 1 '<key>CFBundleVersion</key>' main/tmp/Payload/YouTube.app/Info.plist | grep '<string>' | awk -F'[><]' '{print $3}')" >> $GITHUB_ENV
+          echo "YT_VERSION=$(grep -A 1 '<key>CFBundleVersion</key>' tmp/Payload/YouTube.app/Info.plist | grep '<string>' | awk -F'[><]' '{print $3}')" >> $GITHUB_ENV
           # Get the version number of the latest release
-          wget -qO- https://github.com/dayanch96/YTLite/releases/latest > main/tmp/release_page.html
-          YTLITE_VERSION=$(grep -o -E '/tag/v[^"]+' main/tmp/release_page.html | head -n 1 | sed 's/\/tag\/v//')
+          wget -qO- https://github.com/dayanch96/YTLite/releases/latest > tmp/release_page.html
+          YTLITE_VERSION=$(grep -o -E '/tag/v[^"]+' tmp/release_page.html | head -n 1 | sed 's/\/tag\/v//')
           echo "YTLITE_VERSION=${YTLITE_VERSION}" >> $GITHUB_ENV
           echo $YTLITE_VERSION
           # Remove contents in the iPA that interfere with sideloading
-          rm -rf main/tmp/Payload/YouTube.app/_CodeSignature/CodeResources
-          rm -rf main/tmp/Payload/YouTube.app/PlugIns/*
+          rm -rf tmp/Payload/YouTube.app/_CodeSignature/CodeResources
+          rm -rf tmp/Payload/YouTube.app/PlugIns/*
           # Modify Info.plist to remove UISupportedDevices (Python script)
           python - <<EOF
           import plistlib
@@ -108,20 +99,18 @@ jobs:
 
               with open(filepath, 'wb') as f:
                   plistlib.dump(plist, f)
-
-          filepath = 'main/tmp/Payload/YouTube.app/Info.plist'
+          
+          filepath = 'tmp/Payload/YouTube.app/Info.plist'
           remove_uisupporteddevices(filepath)
           EOF
           # Manually install the Open in YouTube extension
-          cp -R main/Extensions/*.appex main/tmp/Payload/YouTube.app/PlugIns
+          cp -R Extensions/*.appex tmp/Payload/YouTube.app/PlugIns
         env:
           THEOS: ${{ github.workspace }}/theos
-          YOUTUBE_URL: ${{ env.URL_YT }}
 
       - name: Build Package
         id: build_package
         run: |
-          cd ${{ github.workspace }}/main
           # Replace lines in Makefile based on inputs
           sed -i '' "s/^BUNDLE_ID.*$/BUNDLE_ID = ${{ env.BUNDLE_ID }}/" Makefile
           sed -i '' "s/^DISPLAY_NAME.*$/DISPLAY_NAME = ${{ env.APP_NAME }}/" Makefile
