@@ -35,7 +35,12 @@ YTLITE_DYLIB = $(YTLITE_PATH)/var/jb/Library/MobileSubstrate/DynamicLibraries/YT
 YTLITE_BUNDLE = $(YTLITE_PATH)/var/jb/Library/Application\ Support/YTLite.bundle
 before-package::
 	@echo -e "==> \033[1mMoving tweak's bundle to Resources/...\033[0m"
-	@mkdir -p Resources/Frameworks/Alderis.framework && find .theos/obj/install/Library/Frameworks/Alderis.framework -maxdepth 1 -type f -exec cp {} Resources/Frameworks/Alderis.framework/ \;
+	@mkdir -p Resources/Frameworks/Alderis.framework
+	@if [ -d ".theos/obj/install/Library/Frameworks/Alderis.framework" ]; then \
+		find .theos/obj/install/Library/Frameworks/Alderis.framework -maxdepth 1 -type f -exec cp {} Resources/Frameworks/Alderis.framework/ \; ; \
+	elif [ -d "Tweaks/Alderis/lcpshim/.theos/obj/install/Library/Frameworks/Alderis.framework" ]; then \
+		find Tweaks/Alderis/lcpshim/.theos/obj/install/Library/Frameworks/Alderis.framework -maxdepth 1 -type f -exec cp {} Resources/Frameworks/Alderis.framework/ \; ; \
+	fi
 	@cp -R Tweaks/YTLite/var/jb/Library/Application\ Support/YTLite.bundle Resources/
 	@cp -R Tweaks/YTUHD/layout/Library/Application\ Support/YTUHD.bundle Resources/
 	@cp -R Tweaks/YouPiP/layout/Library/Application\ Support/YouPiP.bundle Resources/
