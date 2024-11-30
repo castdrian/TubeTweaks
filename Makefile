@@ -71,7 +71,7 @@ before-all::
 		rm -rf $(YTLITE_PATH)/*; \
 		$(PRINT_FORMAT_BLUE) "Downloading YTLite"; \
 		echo "YTLITE_VERSION: $(YTLITE_VERSION)"; \
-		curl -s -L "https://github.com/dayanch96/YTLite/releases/download/v$(YTLITE_VERSION)/com.dvntm.ytlite_$(YTLITE_VERSION)_iphoneos-arm64.deb" -o $(YTLITE_DEB); \
+		curl -s -L "https://github.com/dayanch96/YTLite/releases/download/v$(YTLITE_VERSION)/com.dvntm.ytlite_$(YTLITE_VERSION)_iphoneos-arm64e.deb" -o $(YTLITE_DEB); \
 		tar -xf $(YTLITE_DEB) -C $(YTLITE_PATH); tar -xf $(YTLITE_PATH)/data.tar* -C $(YTLITE_PATH); \
 		if [[ ! -f $(YTLITE_DYLIB) || ! -d $(YTLITE_BUNDLE) ]]; then \
 			$(PRINT_FORMAT_ERROR) "Failed to extract YTLite"; exit 1; \
