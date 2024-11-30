@@ -1,10 +1,10 @@
 {
   "name": "YouTube App Repo",
-  "identifier": "dev.youtube.ytplus",
+  "identifier": "dev.adrian.tubetweaks",
   "iconURL": "https://cdn-icons-png.flaticon.com/512/255/255337.png",
   "apps": [
     {
-      "name": "YTLitePlus",
+      "name": "TubeTweaks",
       "bundleIdentifier": "com.google.ios.youtube",
       "developerName": "Multiple People",
       "iconURL": "https://cdn-icons-png.flaticon.com/512/255/255337.png",
@@ -12,12 +12,6 @@
       "subtitle": "A tweak collection for YouTube",
       "tintColor": "cd201f",
       "versions": [
-        {
-          "version": "19.42.1",
-          "date": "2024-11-10",
-          "size": 116915110,
-          "downloadURL": "https://github.com/castdrian/YTLitePlus/releases/download/v19.42.1/YTLitePlus_19.42.1_5.0.2.ipa"
-        }
       ],
       "appPermissions": {}
     }
