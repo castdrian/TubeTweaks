@@ -32,6 +32,6 @@ if [[ $? -eq 0 ]]; then
   echo "SHASUM256: $(shasum -a 256 packages/*.ipa)"
 
 else
-  echo "Failed building YTLitePlus"
+  echo "Failed building TubeTweaks"
 
 fi

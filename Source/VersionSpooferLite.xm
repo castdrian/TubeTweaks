@@ -1,4 +1,4 @@
-#import "../YTLitePlus.h"
+#import "../TubeTweaks.h"
 
 
 static int appVersionSpoofer() {

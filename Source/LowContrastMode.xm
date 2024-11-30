@@ -1,4 +1,4 @@
-#import "../YTLitePlus.h"
+#import "../TubeTweaks.h"
 
 // Low Contrast Mode - @arichornlover
 static int contrastMode() {

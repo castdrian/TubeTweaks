@@ -38,7 +38,7 @@ body:
 - type: input
   attributes:
     label: Tweak version
-    placeholder: YTLitePlus - v19.xx.x-4.0.1
+    placeholder: TubeTweaks - v19.xx.x-4.0.1
     description: "**latest or newest is NOT a version number!**"
   validations:
     required: true
@@ -54,8 +54,8 @@ body:
 
 - type: dropdown
   attributes:
-    label: Are you using the newest version of YTLitePlus?
-    description: Update to the [latest version](https://github.com/YTLitePlus/YTLitePlus/releases) to see if it fixes your issue
+    label: Are you using the newest version of TubeTweaks?
+    description: Update to the [latest version](https://github.com/TubeTweaks/TubeTweaks/releases) to see if it fixes your issue
     options:
       - ✅ Yes, I'm using the latest version
       - ❌ No, I'll explain at the end

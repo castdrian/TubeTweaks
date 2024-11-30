@@ -1,4 +1,4 @@
-#import "../YTLitePlus.h"
+#import "../TubeTweaks.h"
 #import "../Tweaks/YouTubeHeader/YTSettingsViewController.h"
 #import "../Tweaks/YouTubeHeader/YTSearchableSettingsViewController.h"
 #import "../Tweaks/YouTubeHeader/YTSettingsSectionItem.h"
@@ -40,14 +40,14 @@ static int appVersionSpoofer() {
     return [[NSUserDefaults standardUserDefaults] integerForKey:@"versionSpoofer"];
 }
 
-@interface YTSettingsSectionItemManager (YTLitePlus)
-- (void)updateYTLitePlusSectionWithEntry:(id)entry;
+@interface YTSettingsSectionItemManager (TubeTweaks)
+- (void)updateTubeTweaksSectionWithEntry:(id)entry;
 @end
 
-extern NSBundle *YTLitePlusBundle();
+extern NSBundle *TubeTweaksBundle();
 
-// Add both YTLite and YTLitePlus to YouGroupSettings
-static const NSInteger YTLitePlusSection = 788;
+// Add both YTLite and TubeTweaks to YouGroupSettings
+static const NSInteger TubeTweaksSection = 788;
 static const NSInteger YTLiteSection = 789;
 %hook YTSettingsGroupData
 + (NSMutableArray <NSNumber *> *)tweaks {
@@ -55,7 +55,7 @@ static const NSInteger YTLiteSection = 789;
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [originalTweaks addObject:@(YTLitePlusSection)];
+        [originalTweaks addObject:@(TubeTweaksSection)];
         [originalTweaks addObject:@(YTLiteSection)];
     });
 
@@ -64,14 +64,14 @@ static const NSInteger YTLiteSection = 789;
 %end
 
 
-// Add YTLitePlus to the settings list
+// Add TubeTweaks to the settings list
 %hook YTAppSettingsPresentationData
 + (NSArray *)settingsCategoryOrder {
     NSArray *order = %orig;
     NSMutableArray *mutableOrder = [order mutableCopy];
     NSUInteger insertIndex = [order indexOfObject:@(1)];
     if (insertIndex != NSNotFound)
-        [mutableOrder insertObject:@(YTLitePlusSection) atIndex:insertIndex + 1];
+        [mutableOrder insertObject:@(TubeTweaksSection) atIndex:insertIndex + 1];
     return mutableOrder;
 }
 %end
@@ -86,20 +86,20 @@ static const NSInteger YTLiteSection = 789;
 
 %hook YTSettingsSectionItemManager
 %new(v@:@)
-- (void)updateYTLitePlusSectionWithEntry:(id)entry {
+- (void)updateTubeTweaksSectionWithEntry:(id)entry {
     NSMutableArray *sectionItems = [NSMutableArray array];
-    NSBundle *tweakBundle = YTLitePlusBundle();
+    NSBundle *tweakBundle = TubeTweaksBundle();
     Class YTSettingsSectionItemClass = %c(YTSettingsSectionItem);
     YTSettingsViewController *settingsViewController = [self valueForKey:@"_settingsViewControllerDelegate"];
 
-    // Add item for going to the YTLitePlus GitHub page
+    // Add item for going to the TubeTweaks GitHub page
     YTSettingsSectionItem *main = [%c(YTSettingsSectionItem)
         itemWithTitle:[NSString stringWithFormat:LOC(@"VERSION"), @(OS_STRINGIFY(TWEAK_VERSION))]
         titleDescription:LOC(@"VERSION_CHECK")
         accessibilityIdentifier:nil
         detailTextBlock:nil
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-            return [%c(YTUIUtils) openURL:[NSURL URLWithString:@"https://github.com/YTLitePlus/YTLitePlus/releases/latest"]];
+            return [%c(YTUIUtils) openURL:[NSURL URLWithString:@"https://github.com/TubeTweaks/TubeTweaks/releases/latest"]];
         }];
     [sectionItems addObject:main];
 
@@ -112,7 +112,7 @@ static const NSInteger YTLiteSection = 789;
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
             if (IS_ENABLED(@"switchCopyandPasteFunctionality_enabled")) {
                 // Export Settings functionality
-                NSURL *tempFileURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"YTLitePlusSettings.txt"]];
+                NSURL *tempFileURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"TubeTweaksSettings.txt"]];
                 NSMutableString *settingsString = [NSMutableString string];
                 for (NSString *key in NSUserDefaultsCopyKeys) {
                     id value = [[NSUserDefaults standardUserDefaults] objectForKey:key];
@@ -665,13 +665,13 @@ static const NSInteger YTLiteSection = 789;
     [sectionItems addObject:miscellaneousGroup];
 
     if ([settingsViewController respondsToSelector:@selector(setSectionItems:forCategory:title:icon:titleDescription:headerHidden:)])
-        [settingsViewController setSectionItems:sectionItems forCategory:YTLitePlusSection title:@"YTLitePlus" icon:nil titleDescription:LOC(@"TITLE DESCRIPTION") headerHidden:YES];
+        [settingsViewController setSectionItems:sectionItems forCategory:TubeTweaksSection title:@"TubeTweaks" icon:nil titleDescription:LOC(@"TITLE DESCRIPTION") headerHidden:YES];
     else
-        [settingsViewController setSectionItems:sectionItems forCategory:YTLitePlusSection title:@"YTLitePlus" titleDescription:LOC(@"TITLE DESCRIPTION") headerHidden:YES];}
+        [settingsViewController setSectionItems:sectionItems forCategory:TubeTweaksSection title:@"TubeTweaks" titleDescription:LOC(@"TITLE DESCRIPTION") headerHidden:YES];}
 
 - (void)updateSectionForCategory:(NSUInteger)category withEntry:(id)entry {
-    if (category == YTLitePlusSection) {
-        [self updateYTLitePlusSectionWithEntry:entry];
+    if (category == TubeTweaksSection) {
+        [self updateTubeTweaksSectionWithEntry:entry];
         return;
     }
     %orig;

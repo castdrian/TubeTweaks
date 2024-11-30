@@ -1,4 +1,4 @@
-#import "../YTLitePlus.h"
+#import "../TubeTweaks.h"
 
 static BOOL isDarkMode() {
     return ([[NSUserDefaults standardUserDefaults] integerForKey:@"page_style"] == 1);
