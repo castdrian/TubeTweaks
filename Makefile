@@ -31,7 +31,6 @@ SUBPROJECTS += Tweaks/Gonerino Tweaks/FLEXing/libflex Tweaks/YTUHD Tweaks/YouPiP
 include $(THEOS_MAKE_PATH)/aggregate.mk
 
 YTLITE_PATH = Tweaks/YTLite
-YTLITE_DEB = $(YTLITE_PATH)/com.dvntm.ytlite_*_iphoneos-arm64.deb
 YTLITE_DYLIB = $(YTLITE_PATH)/var/jb/Library/MobileSubstrate/DynamicLibraries/YTLite.dylib
 YTLITE_BUNDLE = $(YTLITE_PATH)/var/jb/Library/Application\ Support/YTLite.bundle
 
@@ -69,8 +68,11 @@ before-all::
 		rm -rf $(YTLITE_PATH)/*; \
 		$(PRINT_FORMAT_BLUE) "Downloading YTLite"; \
 		LATEST_VERSION=$$(curl -s https://api.github.com/repos/dayanch96/YTLite/releases/latest | grep -o '"tag_name": "v[^"]*"' | cut -d'"' -f4 | tr -d 'v'); \
-		curl -s -L "https://github.com/dayanch96/YTLite/releases/latest/download/com.dvntm.ytlite_$${LATEST_VERSION}_iphoneos-arm64.deb" -o $(YTLITE_DEB); \
-		tar -xf $(YTLITE_DEB) -C $(YTLITE_PATH); tar -xf $(YTLITE_PATH)/data.tar* -C $(YTLITE_PATH); \
+		cd $(YTLITE_PATH) && \
+		curl -s -L -O "https://github.com/dayanch96/YTLite/releases/latest/download/com.dvntm.ytlite_$${LATEST_VERSION}_iphoneos-arm64.deb" && \
+		DOWNLOADED_DEB=$$(ls *.deb) && \
+		tar -xf "$$DOWNLOADED_DEB" && tar -xf data.tar* && \
+		cd - > /dev/null; \
 		if [[ ! -f $(YTLITE_DYLIB) || ! -d $(YTLITE_BUNDLE) ]]; then \
 			$(PRINT_FORMAT_ERROR) "Failed to extract YTLite"; exit 1; \
 		fi; \
