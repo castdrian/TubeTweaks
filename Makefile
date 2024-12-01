@@ -66,6 +66,7 @@ internal-clean::
 before-all::
 	@rm -rf $(YTLITE_PATH)/*
 	@$(PRINT_FORMAT_BLUE) "Downloading YTLite"
+	@mkdir -p $(YTLITE_PATH)
 	@LATEST_RELEASE=$$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/dayanch96/YTLite/releases/latest) && \
 	DEB_URL=$$(echo "$$LATEST_RELEASE" | jq -r '.assets[] | select(.name | endswith("iphoneos-arm64.deb")) | .browser_download_url') && \
 	if [ -n "$$DEB_URL" ]; then \
