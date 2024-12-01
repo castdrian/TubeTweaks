@@ -85,5 +85,6 @@ before-all::
 		$(PRINT_FORMAT_ERROR) "Failed to fetch YTLite release info" && exit 1; \
 	fi && \
 	if [ ! -f "$(YTLITE_DYLIB)" ] || [ ! -d "$(YTLITE_BUNDLE)" ]; then \
+
 		$(PRINT_FORMAT_ERROR) "Failed to extract YTLite" && exit 1; \
 	fi
