@@ -64,19 +64,20 @@ internal-clean::
 	@rm -rf $(YTLITE_PATH)/*
 
 before-all::
-	rm -rf $(YTLITE_PATH)/*; \
-	$(PRINT_FORMAT_BLUE) "Downloading YTLite"; \
-	LATEST_RELEASE_URL=$$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/dayanch96/YTLite/releases/latest); \
-	if [ $$? -eq 0 ]; then \
-		DEB_URL=$$(echo "$$LATEST_RELEASE_URL" | jq -r '.assets[] | select(.name | endswith("iphoneos-arm64.deb")) | .browser_download_url'); \
+	@rm -rf $(YTLITE_PATH)/*
+	@$(PRINT_FORMAT_BLUE) "Downloading YTLite"
+	@LATEST_RELEASE=$$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/dayanch96/YTLite/releases/latest) && \
+	DEB_URL=$$(echo "$$LATEST_RELEASE" | jq -r '.assets[] | select(.name | endswith("iphoneos-arm64.deb")) | .browser_download_url') && \
+	if [ -n "$$DEB_URL" ]; then \
 		cd $(YTLITE_PATH) && \
 		curl -s -L -O "$$DEB_URL" && \
 		DOWNLOADED_DEB=$$(ls *.deb) && \
-		tar -xf "$$DOWNLOADED_DEB" && tar -xf data.tar* && \
+		tar -xf "$$DOWNLOADED_DEB" && \
+		tar -xf data.tar* && \
 		cd - > /dev/null; \
 	else \
-		$(PRINT_FORMAT_ERROR) "Failed to fetch YTLite release info"; exit 1; \
-	fi; \
-	if [[ ! -f $(YTLITE_DYLIB) || ! -d $(YTLITE_BUNDLE) ]]; then \
-		$(PRINT_FORMAT_ERROR) "Failed to extract YTLite"; exit 1; \
-	fi;
+		$(PRINT_FORMAT_ERROR) "Failed to fetch YTLite release info" && exit 1; \
+	fi && \
+	if [ ! -f "$(YTLITE_DYLIB)" ] || [ ! -d "$(YTLITE_BUNDLE)" ]; then \
+		$(PRINT_FORMAT_ERROR) "Failed to extract YTLite" && exit 1; \
+	fi
