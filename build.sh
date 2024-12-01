@@ -47,12 +47,6 @@ if ! make package FINALPACKAGE=1; then
     exit 1
 fi
 
-echo "Preparing IPA..."
-rm -rf tmp/Payload/YouTube.app/_CodeSignature/CodeResources
-rm -rf tmp/Payload/YouTube.app/PlugIns/*
-(cd tmp && zip -r ../*.ipa Payload/)
-rm -rf tmp
-
 echo "Injecting..."
 if ! cyan -duwsgq -i *.ipa -o "TubeTweaks_${yt_version}.ipa" -f packages/*.deb Tweaks/YTLite/*.deb Extensions/*.appex; then
     echo "Failed to inject files"
