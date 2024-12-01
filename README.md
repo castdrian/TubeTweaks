@@ -12,11 +12,11 @@
 | BigYTMiniPlayer       | Jailbreak tweak that makes the miniplayer in YouTube easier to see.            |
 | DontEatMyContent      | Prevents the notch/Dynamic Island from covering 2:1 video content in YouTube.  |
 | Gonerino              | Block specific channels and automatically remove their videos from your feed.  |
-<!-- | iSponsorBlock         | Skips annoying sponsor ads inside YouTube videos.                              | -->
+| ~~iSponsorBlock~~     | ~~Skips annoying sponsor ads inside YouTube videos.~~                          |
 | LowContrastMode       | Makes the UI interface look dimmer to make it easier on the eyes. (App Compatibility: v17.33.2-v17.38.10) |
 | OLEDDarkmode          | Replace official YouTube dark mode with a true OLED dark mode.                 |
 | OLDDarkmode           | Replace new official YouTube dark mode with old (grey) YouTube dark mode.      |
-<!-- | Return YouTube Dislikes | Brings back Dislike counts under YouTube videos using ReturnYouTubeDislike's API. | -->
+| ~~Return YouTube Dislikes~~ | ~~Brings back Dislike counts under YouTube videos using ReturnYouTubeDislike's API.~~ |
 | YTABConfig            | Adds a new section named "A/B" in the YouTube app settings where all features can be toggled freely by the user. |
 | YTHoldForSpeed        | Allows you to quickly toggle between a selected video playback speed by tapping and holding on the video player in the YouTube application. |
 | YTLite                | A tweak that enhances the YouTube experience by removing ads, enabling background playback, and offering over 60 customization options. |
@@ -27,7 +27,7 @@
 | YTSpeed               | Adds 2.25x to 5x playback speed options in the YouTube video player.           |
 | YTVideoOverlay        | A helper tweak that adds buttons on the YouTube video overlay.                 |
 | YouMute               | Allows users to mute/unmute videos directly in the YouTube Video Player.       |
-<!-- | YouPiP                | Enables native Picture-in-Picture feature for videos in the YouTube app.       | -->
+| ~~YouPiP~~           | ~~Enables native Picture-in-Picture feature for videos in the YouTube app.~~    |
 | YouQuality            | Enables you to view and change video quality in YouTube faster.                |
 | YouRememberCaption    | Makes YouTube remember your video caption setting.                             |
 
