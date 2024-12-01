@@ -59,7 +59,7 @@ jobs:
       - name: Install cyan
         run: pip install --force-reinstall https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip Pillow
 
-      - name: Build Package
+      - name: Build Packages
         run: |
           make package FINALPACKAGE=1
           cyan -duwsgq -i YouTube.ipa -o TubeTweaks_${{ env.YT_VERSION }}.ipa -f packages/*.deb

@@ -70,21 +70,15 @@ before-all::
 	@LATEST_RELEASE=$$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/dayanch96/YTLite/releases/latest) && \
 	DEB_URL=$$(echo "$$LATEST_RELEASE" | jq -r '.assets[] | select(.name | endswith("iphoneos-arm64.deb")) | .browser_download_url') && \
 	if [ -n "$$DEB_URL" ]; then \
-		echo "Downloading from: $$DEB_URL" && \
 		cd $(YTLITE_PATH) && \
 		curl -s -L -O "$$DEB_URL" && \
 		DOWNLOADED_DEB=$$(ls *.deb) && \
-		echo "Extracting $$DOWNLOADED_DEB" && \
 		ar x "$$DOWNLOADED_DEB" && \
-		echo "Extracting data.tar.*" && \
 		tar xf data.tar* && \
-		echo "Extracted files:" && \
-		find . -type f -o -type d && \
 		cd - > /dev/null; \
 	else \
 		$(PRINT_FORMAT_ERROR) "Failed to fetch YTLite release info" && exit 1; \
 	fi && \
 	if [ ! -f "$(YTLITE_DYLIB)" ] || [ ! -d "$(YTLITE_BUNDLE)" ]; then \
-
 		$(PRINT_FORMAT_ERROR) "Failed to extract YTLite" && exit 1; \
 	fi
