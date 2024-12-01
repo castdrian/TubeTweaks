@@ -1,0 +1,24 @@
+name: Clear Version History
+
+on:
+  workflow_dispatch:
+
+jobs:
+  clear:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Clear Versions Array
+        run: |
+          jq '.apps[0].versions = []' app-repo.json > temp.json && mv temp.json app-repo.json
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: "chore: clear version history"
+          add: app-repo.json 

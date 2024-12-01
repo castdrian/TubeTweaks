@@ -62,6 +62,17 @@ jobs:
       - name: Build Packages
         run: |
           make package FINALPACKAGE=1
+          
+      - name: Prepare IPA
+        run: |
+          unzip -o YouTube.ipa -d tmp
+          rm -rf tmp/Payload/YouTube.app/_CodeSignature/CodeResources
+          rm -rf tmp/Payload/YouTube.app/PlugIns/*
+          (cd tmp && zip -r ../YouTube.ipa Payload/)
+          rm -rf tmp
+
+      - name: Inject Tweaks
+        run: |
           cyan -duwsgq -i YouTube.ipa -o TubeTweaks_${{ env.YT_VERSION }}.ipa -f Tweaks/YTLite/*.deb packages/*.deb Extensions/*.appex
 
       - name: Create GitHub Release
