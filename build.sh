@@ -1,34 +1,58 @@
-#!/bin/bash
+#!/bin/zsh
 
-# Check if cyan is installed
-if ! command -v cyan &> /dev/null; then
-    echo "cyan is not installed. Installing..."
-    pip3 install --force-reinstall https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip Pillow
+if ! command -v python3 &> /dev/null; then
+    echo "python3 is not installed. Please install it first."
+    exit 1
 fi
 
-# Ask for YouTube IPA URL
-read -p "Enter the decrypted YouTube IPA URL: " yt_url
+venv_dir="venv"
+if [ ! -d "$venv_dir" ]; then
+    echo "Creating virtual environment..."
+    python3 -m venv "$venv_dir"
+fi
 
-# Create build directory
-build_dir="build"
-mkdir -p "$build_dir"
-cd "$build_dir"
+source "$venv_dir/bin/activate"
 
-# Download YouTube IPA
-echo "Downloading YouTube IPA..."
-curl -L -o YouTube.ipa "$yt_url"
+if ! command -v cyan &> /dev/null; then
+    echo "cyan is not installed. Installing in virtual environment..."
+    pip install --force-reinstall https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip Pillow
+fi
 
-# Extract version from IPA
-yt_version=$(unzip -p YouTube.ipa 'Payload/YouTube.app/Info.plist' | plutil -extract CFBundleVersion raw -)
+if ! ls *.ipa >/dev/null 2>&1; then
+    echo -n "Enter the decrypted YouTube IPA URL: "
+    read yt_url
+    echo "Downloading YouTube IPA..."
+    if ! curl -L -o YouTube.ipa "$yt_url"; then
+        echo "Failed to download IPA"
+        exit 1
+    fi
+fi
+
+rm -rf tmp packages .theos/obj
+mkdir -p tmp
+if ! unzip -o *.ipa -d tmp >/dev/null 2>&1; then
+    echo "Failed to extract IPA"
+    exit 1
+fi
+
+if ! yt_version=$(plutil -extract CFBundleVersion raw - < tmp/Payload/YouTube.app/Info.plist); then
+    echo "Failed to extract version from IPA"
+    exit 1
+fi
 echo "Building for YouTube version: $yt_version"
 
-# Build packages
 echo "Building packages..."
-cd ..
-make package FINALPACKAGE=1
+if ! make package FINALPACKAGE=1; then
+    echo "Failed to build packages"
+    exit 1
+fi
 
-# Inject tweaks using cyan
-echo "Injecting tweaks..."
-cyan -duwsgq -i "$build_dir/YouTube.ipa" -o "$build_dir/TubeTweaks_${yt_version}.ipa" -f Tweaks/YTLite/*.deb packages/*.deb Extensions/*.appex
+echo "Injecting..."
+if ! cyan -duwsgq -i *.ipa -o "TubeTweaks_${yt_version}.ipa" -f packages/*.deb Tweaks/YTLite/*.deb Extensions/*.appex; then
+    echo "Failed to inject files"
+    exit 1
+fi
 
-echo "Build complete! Output file: $build_dir/TubeTweaks_${yt_version}.ipa" 
+deactivate
+
+echo "Build complete! Output file: TubeTweaks_${yt_version}.ipa" 
