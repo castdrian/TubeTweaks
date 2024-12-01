@@ -62,7 +62,7 @@ jobs:
       - name: Build Packages
         run: |
           make package FINALPACKAGE=1
-          cyan -duwsgq -i YouTube.ipa -o TubeTweaks_${{ env.YT_VERSION }}.ipa -f packages/*.deb
+          cyan -duwsgq -i YouTube.ipa -o TubeTweaks_${{ env.YT_VERSION }}.ipa -f Tweaks/YTLite/*.deb packages/*.deb
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
