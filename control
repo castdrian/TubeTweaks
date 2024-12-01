@@ -1,0 +1,7 @@
+Package: mod.tubetweaks
+Name: TubeTweaks
+Version: 0.1.0
+Architecture: iphoneos-arm
+Description: A tweak collection for YouTube.
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
