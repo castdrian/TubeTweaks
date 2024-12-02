@@ -11,14 +11,7 @@
       "localizedDescription": "A tweak collection for YouTube",
       "subtitle": "A tweak collection for YouTube",
       "tintColor": "cd201f",
-      "versions": [
-        {
-          "version": "19.47.7",
-          "date": "2024-12-02",
-          "size": 118316593,
-          "downloadURL": "https://github.com/castdrian/TubeTweaks/releases/download/v19.47.7/TubeTweaks_19.47.7.ipa"
-        }
-      ],
+      "versions": [],
       "appPermissions": {}
     }
   ],
