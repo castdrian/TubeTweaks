@@ -6,7 +6,7 @@ CODESIGN_IPA = 0
 
 libFLEX_ARCHS = arm64
 
-TWEAK_NAME = TubeTweaks
+# TWEAK_NAME = TubeTweaks
 DISPLAY_NAME = YouTube
 BUNDLE_ID = com.google.ios.youtube
 
@@ -25,7 +25,7 @@ TubeTweaks_USE_FISHHOOK = 0
 include $(THEOS)/makefiles/common.mk
 include $(THEOS_MAKE_PATH)/tweak.mk
 # SUBPROJECTS += Tweaks/Gonerino Tweaks/Alderis Tweaks/FLEXing/libflex Tweaks/iSponsorBlock Tweaks/YTUHD Tweaks/YouPiP Tweaks/Return-YouTube-Dislikes Tweaks/YTABConfig Tweaks/YouMute Tweaks/DontEatMyContent Tweaks/YTHoldForSpeed Tweaks/YTVideoOverlay Tweaks/YouQuality Tweaks/YouTimeStamp Tweaks/YouGroupSettings Tweaks/YouLoop
-SUBPROJECTS += Tweaks/Gonerino  Tweaks/YTUHD Tweaks/YTABConfig Tweaks/YouMute Tweaks/DontEatMyContent Tweaks/YTHoldForSpeed Tweaks/YTVideoOverlay Tweaks/YouQuality Tweaks/YouTimeStamp Tweaks/YouGroupSettings Tweaks/YouLoop
+SUBPROJECTS += Tweaks/Gonerino Tweaks/YTUHD Tweaks/YTABConfig Tweaks/YouMute Tweaks/DontEatMyContent Tweaks/YTHoldForSpeed Tweaks/YTVideoOverlay Tweaks/YouQuality Tweaks/YouTimeStamp Tweaks/YouGroupSettings Tweaks/YouLoop
 
 include $(THEOS_MAKE_PATH)/aggregate.mk
 
