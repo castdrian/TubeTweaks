@@ -195,12 +195,12 @@ typedef NS_ENUM(NSUInteger, GestureSection) {
 @end
 
 // SponsorBlock button in Nav bar
-@interface MDCButton : UIButton
-@end
+// @interface MDCButton : UIButton
+// @end
 
 @interface YTRightNavigationButtons (TubeTweaks)
 @property YTQTMButton *notificationButton;
-@property YTQTMButton *sponsorBlockButton;
+// @property YTQTMButton *sponsorBlockButton;
 @property YTQTMButton *videoPlayerButton;
 @end
 
@@ -278,11 +278,11 @@ typedef NS_ENUM(NSUInteger, GestureSection) {
 @interface YTCommentDetailHeaderCell : UIView
 @end
 
-@interface SponsorBlockSettingsController : UITableViewController 
-@end
+// @interface SponsorBlockSettingsController : UITableViewController 
+// @end
 
-@interface SponsorBlockViewController : UIViewController
-@end
+// @interface SponsorBlockViewController : UIViewController
+// @end
 
 @interface UICandidateViewController : UIViewController
 @end

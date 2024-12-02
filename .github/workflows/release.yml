@@ -35,15 +35,13 @@ jobs:
       - name: Prepare Theos
         uses: Randomblock1/theos-action@v1
 
-      - name: iOS SDK Caching
-        id: SDK
+      - name: Cache Theos
         uses: actions/cache@v4
-        env:
-          cache-name: iOS-${{ inputs.sdk_version }}-SDK
         with:
-          path: theos/sdks/
-          key: ${{ env.cache-name }}
-          restore-keys: ${{ env.cache-name }}
+          path: ${{ github.workspace }}/theos
+          key: ${{ runner.os }}-theos-${{ hashFiles('**/control') }}
+          restore-keys: |
+            ${{ runner.os }}-theos-
 
       - name: Set GNU Make Path
         run: |
