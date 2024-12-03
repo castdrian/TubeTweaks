@@ -2,11 +2,6 @@
 
 ## Tweaks
 
-<details markdown="block">
-  <summary>
-    Included Tweaks
-  </summary>
-
 | **Name**              | **Description**                                                                 |
 |-----------------------|---------------------------------------------------------------------------------|
 | Gonerino              | Block specific channels and automatically remove their videos from your feed.  |
@@ -14,8 +9,6 @@
 | YTABConfig            | Adds a new section named "A/B" in the YouTube app settings where all features can be toggled freely by the user. |
 | YTVideoOverlay        | A helper tweak that adds buttons on the YouTube video overlay.                 |
 | DontEatMyContent      | Prevents the notch/Dynamic Island from covering 2:1 video content in YouTube.  |
-
-</details>
 
 ## Install
   
