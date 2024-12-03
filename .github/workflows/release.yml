@@ -35,6 +35,10 @@ jobs:
       - name: Prepare Theos
         uses: Randomblock1/theos-action@v1
 
+      - name: Clone YouTubeHeader
+        run: |
+          git clone https://github.com/PoomSmart/YouTubeHeader $THEOS/include/YouTubeHeader
+
       - name: Cache Theos
         uses: actions/cache@v4
         with:
