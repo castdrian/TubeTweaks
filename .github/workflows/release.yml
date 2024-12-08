@@ -63,7 +63,7 @@ jobs:
 
       - name: Build App
         run: |
-          make package FINALPACKAGE=1
+          make package
           cyan -duwsgq -i YouTube.ipa -o TubeTweaks_${{ env.YT_VERSION }}.ipa -f Tweaks/YTLite/*.deb packages/*.deb Extensions/*.appex
 
       - name: Create GitHub Release

@@ -42,13 +42,13 @@ fi
 echo "Building for YouTube version: $yt_version"
 
 echo "Building packages..."
-if ! make package FINALPACKAGE=1; then
+if ! make package; then
     echo "Failed to build packages"
     exit 1
 fi
 
 echo "Injecting..."
-if ! cyan -duwsgq -i *.ipa -o "TubeTweaks_${yt_version}.ipa" -f packages/*.deb Tweaks/YTLite/*.deb Extensions/*.appex; then
+if ! cyan -duwsgq -i *.ipa -o "TubeTweaks_${yt_version}.ipa" -f packages/*.deb; then
     echo "Failed to inject files"
     exit 1
 fi

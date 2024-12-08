@@ -13,6 +13,6 @@
 [submodule "Tweaks/Gonerino"]
 	path = Tweaks/Gonerino
 	url = https://github.com/castdrian/Gonerino.git
-[submodule "Extensions"]
-	path = Extensions
-	url = git@github.com:CokePokes/YoutubeExtensions.git
+[submodule "Tweaks/YouQuality"]
+	path = Tweaks/YouQuality
+	url = https://github.com/PoomSmart/YouQuality
