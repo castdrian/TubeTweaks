@@ -6,8 +6,8 @@
 |-----------------------|---------------------------------------------------------------------------------|
 | Gonerino              | Block specific channels and automatically remove their videos from your feed.  |
 | YTLite                | A tweak that enhances the YouTube experience by removing ads, enabling background playback, and offering over 60 customization options. |
+| YouQuality            | Enables you to view and change video quality in YouTube faster.                |
 | YTABConfig            | Adds a new section named "A/B" in the YouTube app settings where all features can be toggled freely by the user. |
-| YTVideoOverlay        | A helper tweak that adds buttons on the YouTube video overlay.                 |
 | DontEatMyContent      | Prevents the notch/Dynamic Island from covering 2:1 video content in YouTube.  |
 
 ## Install
