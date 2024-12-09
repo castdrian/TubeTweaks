@@ -1,13 +1,13 @@
 {
   "name": "YouTube App Repo",
   "identifier": "dev.adrian.tubetweaks",
-  "iconURL": "https://raw.githubusercontent.com/castdrian/TubeTweaks/main/icon.png",
+  "iconURL": "https://raw.githubusercontent.com/castdrian/TubeTweaks/refs/heads/dev/icon.png",
   "apps": [
     {
       "name": "TubeTweaks",
       "bundleIdentifier": "com.google.ios.youtube",
       "developerName": "Multiple People",
-      "iconURL": "https://raw.githubusercontent.com/castdrian/TubeTweaks/main/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/castdrian/TubeTweaks/refs/heads/dev/icon.png",
       "localizedDescription": "A tweak collection for YouTube",
       "subtitle": "A tweak collection for YouTube",
       "tintColor": "cd201f",
