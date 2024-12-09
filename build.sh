@@ -48,7 +48,7 @@ if ! make package; then
 fi
 
 echo "Injecting..."
-if ! cyan -duwsgq -i *.ipa -o "TubeTweaks_${yt_version}.ipa" -f packages/*.deb; then
+if ! cyan -duwsgq -k icon.png -i *.ipa -o "TubeTweaks_${yt_version}.ipa" -f packages/*.deb; then
     echo "Failed to inject files"
     exit 1
 fi
