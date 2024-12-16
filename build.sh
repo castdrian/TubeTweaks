@@ -30,6 +30,20 @@ fi
 
 rm -rf tmp packages .theos/obj
 mkdir -p tmp
+
+echo "Downloading YTLite..."
+LATEST_RELEASE=$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/dayanch96/YTLite/releases/latest)
+DEB_URL=$(echo "$LATEST_RELEASE" | jq -r '.assets[] | select(.name | endswith("iphoneos-arm64.deb")) | .browser_download_url')
+
+if [ -n "$DEB_URL" ]; then
+    cd packages
+    curl -s -L -O "$DEB_URL"
+    cd - > /dev/null
+else
+    echo "Failed to fetch YTLite release info"
+    exit 1
+fi
+
 if ! unzip -o *.ipa -d tmp >/dev/null 2>&1; then
     echo "Failed to extract IPA"
     exit 1

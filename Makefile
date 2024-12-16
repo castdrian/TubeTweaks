@@ -19,13 +19,3 @@ before-all::
 	@rm -rf YouTubeHeader
 	@ln -sf $(THEOS)/include/YouTubeHeader .
 	@mkdir -p packages
-	@$(PRINT_FORMAT_BLUE) "Downloading YTLite"
-	@LATEST_RELEASE=$$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/dayanch96/YTLite/releases/latest) && \
-	DEB_URL=$$(echo "$$LATEST_RELEASE" | jq -r '.assets[] | select(.name | endswith("iphoneos-arm64.deb")) | .browser_download_url') && \
-	if [ -n "$$DEB_URL" ]; then \
-		cd packages && \
-		curl -s -L -O "$$DEB_URL" && \
-		cd - > /dev/null; \
-	else \
-		$(PRINT_FORMAT_ERROR) "Failed to fetch YTLite release info" && exit 1; \
-	fi

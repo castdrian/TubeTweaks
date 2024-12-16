@@ -61,6 +61,14 @@ jobs:
       - name: Install cyan
         run: pip install --force-reinstall https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip Pillow
 
+      - name: Download YTLite
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: 'dayanch96/YTLite'
+          latest: true
+          fileName: '*iphoneos-arm64.deb'
+          out-file-path: 'packages'
+
       - name: Build App
         run: |
           make package
