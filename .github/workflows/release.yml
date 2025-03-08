@@ -39,6 +39,10 @@ jobs:
         run: |
           git clone https://github.com/PoomSmart/YouTubeHeader $THEOS/include/YouTubeHeader
 
+      - name: Clone PSHeader
+        run: |
+          git clone https://github.com/PoomSmart/PSHeader $THEOS/include/PSHeader
+
       - name: Cache Theos
         uses: actions/cache@v4
         with:
