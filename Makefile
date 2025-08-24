@@ -2,7 +2,7 @@ TARGET = iphone:clang:16.5:14.0
 ARCHS = arm64
 FINALPACKAGE = 1
 THEOS_PACKAGE_SCHEME = rootless
-SUBPROJECTS += Tweaks/Gonerino Tweaks/YTABConfig Tweaks/YouQuality Tweaks/YouPiP Tweaks/DontEatMyContent Tweaks/YTVideoOverlay Tweaks/YouGroupSettings
+SUBPROJECTS += Tweaks/Gonerino Tweaks/YouQuality Tweaks/YouPiP Tweaks/YTVideoOverlay Tweaks/YouGroupSettings
 EXTRA_CFLAGS := -I$(THEOS_PROJECT_DIR)/Tweaks -I$(THEOS_PROJECT_DIR)/YouTubeHeaders
 
 export ADDITIONAL_CFLAGS = -I$(THEOS_PROJECT_DIR)/Tweaks -I$(THEOS_PROJECT_DIR)/YouTubeHeaders
