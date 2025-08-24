@@ -13,6 +13,30 @@
       "tintColor": "cd201f",
       "versions": [
         {
+          "version": "20.33.2",
+          "date": "2025-08-22",
+          "size": 127926272,
+          "downloadURL": "https://github.com/castdrian/TubeTweaks/releases/download/v20.33.2/TubeTweaks_20.33.2.ipa"
+        },
+        {
+          "version": "20.32.4",
+          "date": "2025-08-10",
+          "size": 128974848,
+          "downloadURL": "https://github.com/castdrian/TubeTweaks/releases/download/v20.32.4/TubeTweaks_20.32.4.ipa"
+        },
+        {
+          "version": "20.29.3",
+          "date": "2025-07-24",
+          "size": 128974848,
+          "downloadURL": "https://github.com/castdrian/TubeTweaks/releases/download/v20.29.3/TubeTweaks_20.29.3.ipa"
+        },
+        {
+          "version": "20.21.6",
+          "date": "2025-05-31",
+          "size": 125829120,
+          "downloadURL": "https://github.com/castdrian/TubeTweaks/releases/download/v20.21.6/TubeTweaks_20.21.6.ipa"
+        },
+        {
           "version": "20.14.2",
           "date": "2025-04-11",
           "size": 118774569,
