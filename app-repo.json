@@ -13,6 +13,12 @@
       "tintColor": "cd201f",
       "versions": [
         {
+          "version": "20.34.2",
+          "date": "2025-08-26",
+          "size": 128417309,
+          "downloadURL": "https://github.com/castdrian/TubeTweaks/releases/download/v20.34.2/TubeTweaks_20.34.2.ipa"
+        },
+        {
           "version": "20.33.2",
           "date": "2025-08-22",
           "size": 127926272,
