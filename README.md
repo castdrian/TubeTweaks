@@ -8,6 +8,7 @@
 | YTLite                | A tweak that enhances the YouTube experience by removing ads, enabling background playback, and offering over 60 customization options. |
 | YouQuality            | Enables you to view and change video quality in YouTube faster.                |
 | YouPiP                | Picture-in-Picture mode for YouTube videos. |
+| YSRUDFFS               | Fixes YouTube rotation                                      |
 
 ## Install
   
