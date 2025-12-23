@@ -13,6 +13,3 @@
 [submodule "Tweaks/YouPiP"]
 	path = Tweaks/YouPiP
 	url = https://github.com/PoomSmart/YouPiP.git
-[submodule "Tweaks/YSRUDFFS"]
-	path = Tweaks/YSRUDFFS
-	url = https://github.com/castdrian/YSRUDFFS
